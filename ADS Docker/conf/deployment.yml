@@ -1,0 +1,27 @@
+## Access Decision Service part of configuration. See Axiomatics documentation
+#### Path to license file
+license: file:/usr/share/ads/conf/axiomatics_PDP.license
+#### Path to XML configuration file, "domain.xml" is a sample file.
+legacyXmlConfig: file:/usr/share/ads/conf/domain.xml
+authentication:
+  type: Basic
+  user:
+    username: ads-user
+    # The password is "secret"
+    hashPassword: 2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b
+## Dropwizard part of configuration. See http://www.dropwizard.io/1.3.5/docs/manual/configuration.html
+server:
+  applicationConnectors:
+  - type: http
+    port: 9090
+  adminConnectors:
+  - type: http
+    port: 8081
+logging:
+  level: INFO
+  loggers:
+    "com.axiomatics.audit": INFO
+  appenders:
+  - type: console
+    target: stdout
+    timeZone: system
